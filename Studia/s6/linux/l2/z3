@@ -1,0 +1,27 @@
+if [ "$#" -eq 1 ]; then
+    max=$1
+else 
+    max=1000
+fi
+
+filter() {
+    local number
+    read -r number  
+    if [[ -n $number ]]; then
+        echo "$number"
+
+        while read -r num; do
+            if (( $num % $number != 0 )); then
+                echo $num
+            fi
+        done | filter &
+    fi
+}   
+
+primes(){
+    for n in $(seq 2 $max); do
+        echo $n
+    done | filter &
+}
+
+primes   

@@ -1,0 +1,35 @@
+declare -a songs
+
+function print_menu {
+    for path in "${songs[@]}"; do
+        info=$(mp3info -p "%l (%a): %t\n" "$path")
+        echo $info
+    done
+}
+
+function find_songs {
+    while IFS= read -r -d '' song; do
+        songs+=("$song")
+    done < <(find "$1" -type f -name "*.mp3" -print0)
+}
+
+find_songs $1
+PS3="Choose a number to play> "
+IFS=$'\n'
+
+while true; do
+    select fname in $(print_menu); do
+        if [[ -z "$fname" ]]; then
+            echo "Wrong answer"
+        else
+            index=$((REPLY - 1)) 
+            echo "Playing $fname"
+            mpg123 --quiet "${songs[$index]}"
+            break
+        fi
+    done || {
+        echo "Exiting due to end of input (Ctrl+D)"
+        exit 0
+    }
+    clear
+done

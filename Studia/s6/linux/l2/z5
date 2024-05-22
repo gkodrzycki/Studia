@@ -1,0 +1,10 @@
+trap 'clear && exit' INT 
+
+while true; do
+    entropy_avail=$(cat test.txt) # /proc/sys/kernel/random/entropy_avail     
+    poolsize=$(cat /proc/sys/kernel/random/poolsize) 
+    echo -n -e "Available entropy: $entropy_avail / $poolsize \r"
+
+    read -t 1 -n 1 && break 
+done
+clear

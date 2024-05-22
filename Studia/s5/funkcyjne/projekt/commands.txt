@@ -1,0 +1,5 @@
+#use "parser.ml";;
+#use "move_helpers.ml"
+#use "gen_moves.ml";;
+#use "short_parser.ml"
+#use "game.ml"

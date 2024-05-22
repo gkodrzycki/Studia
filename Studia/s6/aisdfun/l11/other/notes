@@ -1,0 +1,19 @@
+1)
+Pełne drzewo jest tylko jedno
+elementy od 0 do 2^k-2
+usuwamy 0 dodajemy 2^k-1
+Wszystko się shiftnęło
+
+
+3)
+n+1 revów
+n appów
+1 na done
+2n+2 invalidate lub exec
+
+
+f-r = -1 rotacja
+snoc zwiększa r
+tail zmniejsza f
+osobno, że zdążymy z frontem
+

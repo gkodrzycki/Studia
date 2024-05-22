@@ -1,0 +1,7 @@
+{
+    "C_Cpp.errorSquiggles": "enabled",
+    "files.associations": {
+        "icmp_receive.h": "c",
+        "ip_icmp.h": "c"
+    }
+}

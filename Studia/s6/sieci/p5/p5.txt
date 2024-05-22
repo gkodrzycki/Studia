@@ -1,0 +1,35 @@
+V1
+ip link set enp0s3 name local0
+ip link set up dev local0
+ip addr add 192.168.1.1/24 local0 
+ 
+192.168.1.1/24 ip
+192.168.1.0    siec
+192.168.1.255  broadcast
+
+V2
+ip link set enp0s3 name local0
+ip link set up dev local0
+ip addr add 192.168.1.2/25 dev local0
+
+192.168.1.2/25 ip
+192.168.1.0    siec
+192.168.1.127  broadcast
+
+V3
+ip link set enp0s3 name local0
+ip link set up dev local0
+ip addr add 192.168.1.129/24 dev local0
+
+192.168.1.129/24 ip
+192.168.1.0      siec
+192.168.1.255    broadcast
+
+V4
+ip link set enp0s3 name local0
+ip link set up dev local0
+ip addr add 192.168.1.130/25 dev local0
+
+192.168.1.130/25 ip
+192.168.1.128    siec
+192.168.1.255    broadcast

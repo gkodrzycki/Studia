@@ -1,0 +1,93 @@
+#!/bin/bash
+
+OPTIONS=$(getopt -o cg:hvwC -l capitalize,color:,greeting:,help,version,world,upper -n 'hwb' -- "$@")
+
+if [ $? -ne 0 ] || [ $# -eq 0 ]; then
+    echo "Try '$0 --help' for more information."
+    exit 1
+fi
+
+echo $*
+eval set -- "$OPTIONS"
+echo $*
+
+CAPITALIZE=false
+COLOR=auto
+GREETING="Hello,"
+PRINT_EXTRA_WORLD=false
+UPPER=false
+
+while true; do
+    # echo $1
+    case "$1" in
+        -c|--capitalize)
+            CAPITALIZE=true
+            shift;;
+
+        -g|--greeting)
+            if [ -n "$2" ]; then
+                GREETING="$2"
+            fi
+            shift 2;;
+
+        --color)
+            if [ -n "$2" ]; then
+                COLOR="$2"
+            fi
+            shift 2;;
+
+        -w|--world)
+            PRINT_EXTRA_WORLD=true
+            shift;;
+
+        -v|--version)
+            echo "hwb version 1.0 created by Grzegorz Kodrzycki"
+            shift;;
+
+        -h|--help)
+            echo "Usage: bash $0 <options> <arguments>"
+            echo "Options: "
+            echo "-c, --capitalize            = capitalize first letter of string"
+            echo "-C, --upper                 = capitalize whole string"
+            echo "-g, --greeting              = substitute 'Hello' for given text"
+            echo "--color[=auto|always|never] = colorize the output"
+            echo "-w, --world                 = print 'Hello, world!' in next line"
+            echo "-v, --verison               = print version"
+            echo "-h, --help                  = print help"
+            shift;;
+        -C|--upper)
+            UPPER=true
+            shift;;
+        --)
+            shift
+            break;;
+    esac
+done
+
+function print {
+    Name=$1
+
+    if [[ $CAPITALIZE ]]; then
+        Name=${Name^}
+    fi
+
+    if [[ $UPPER ]]; then
+        Name=${Name^^}
+    fi
+
+    if [[ $COLOR == auto || $COLOR == always ]]; then
+            Name="\033[0;34m$Name"
+    fi
+
+    echo -e "${GREETING} ${Name}\033[0m!"
+}
+
+# for arg; do
+#     print "$arg"
+# done
+print $1
+
+if $PRINT_EXTRA_WORLD; then
+    GREETING="Hello,"
+    print "world"
+fi

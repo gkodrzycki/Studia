@@ -1,0 +1,30 @@
+No to może jakieś fakty o użytych komendach 
+
+## grep -q "$pattern" 
+odpowiada czy istnieje dany pattern w zapytaniu, można sprawdzić np.
+
+echo "RGBBRG" | grep -q "BG"   
+echo $?  -> zwróci 1 bo nie ma 
+
+echo "RGBBRG" | grep -q "GB"  
+echo $? -> zwróci 0 bo jest :>>
+
+## echo "$curr_state" | grep -b -o "$pattern" | head -n 1 | cut -d: -f1)
+To może weźmy po kolei 
+
+### grep -b dokleja bajty czyli np 
+echo "RGBBRG" | grep -b RG  doklei 0:RGBBRG 
+
+ale teraz łącząc z -o które wypisuje tylko interesujący nas output dostaniemy 
+echo "RGBBRG" | grep -b -o BR 
+3:BR
+
+bo ten pattern zaczyna się przy 3 pozycji więc kox
+
+### head -n 1 | cut -d: -f1
+
+No dalej mamy head -n 1, to raczej nie wymaga wyjaśnienia, ale jeśli jest wiele patternów to wypisujemy tylko 1 z nich
+I teraz wchodzi cut -d: -f1
+W skrócie działa jak split pythonowy czyli splitujemy po znaku który mamy po -d, w naszym przypadku :
+-f1 precyzuje, że chcemy pierwszy element po tym splicie czyli dla formatu x:pattern -> dostaniemy x, gdzie x to miejsce, gdzie się zaczyna
+

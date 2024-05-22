@@ -1,0 +1,21 @@
+1
+172.16.1.13/16 distance 4
+
+3
+172.16.1.14/16 distance 4
+192.168.2.10/24 distance 2
+10.0.1.2/8 distance 3
+
+2
+192.168.2.5/24 distance 2
+192.168.5.5/24 distance 2
+
+2
+10.0.1.1/8 distance 3
+192.168.5.43/24 distance 2
+
+
+POINTS
+Jeśli wysyłamy do kogoś direct zawsze wysyłaj real_dist -> DONE
+Jeśli wysyłamy odległości do kogoś kto jest connenctorem to wysyłajmy mu INF -> 
+to prawdopodobnie trzeba spojrzeć czy conn jest w tej sieci do której właśnie wysyłamy, ale to już na poźniej, teraz chwila spanka 

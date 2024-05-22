@@ -1,0 +1,23 @@
+MAX=$1 
+
+PRIMES=(2)
+i=1
+n=3
+
+while [ $n -le $MAX ]; do
+    j=0
+    for _ in {0..0}; do
+        while [ $(( ${PRIMES[j]} * ${PRIMES[j]} )) -le $n ]; do
+            if [ $(( $n % ${PRIMES[j]} )) -eq 0 ]; then
+                break 2
+            fi
+            j=$(( $j + 1 ))
+        done
+        PRIMES[$((i++))]="$n"
+    done
+    n=$(( $n + 1 ))
+done
+
+echo "Liczby pierwsze do $MAX:"
+echo "${PRIMES[@]}" 
+echo "${#PRIMES[@]}"

@@ -1,0 +1,7 @@
+sleep_time=${1:-1}
+
+while read line; do
+    echo "$line"
+    sleep "$sleep_time"
+done
+

@@ -1,0 +1,55 @@
+.\" Manpage for hwb 
+.\" Contact grzegorz@example.com to correct errors or typos
+.TH HWB 1 "March 2024" "1.0" "hwb man page"
+.SH NAME
+hwb \- script to print personalized greetings
+.SH SYNOPSIS
+.B hwb
+[\fIOPTION\fR] [\fIARGUMENT\fR]
+.SH DESCRIPTION
+The \fBhwb\fR script allows users to print personalized greetings with various options.
+.SH OPTIONS
+.TP
+\fB-c, --capitalize\fR
+Capitalize the first letter of each argument.
+.TP
+\fB-C, --upper\fR
+Capitalize every letter of each argument.
+.TP
+\fB-g, --greeting\fR
+Substitute 'Hello,' with a custom greeting.
+.TP
+\fB--color[=auto|always|never]\fR
+Colorize the output. Default is auto.
+.TP
+\fB-w, --world\fR
+Print 'Hello, world!' in addition to the provided arguments.
+.TP
+\fB-v, --version\fR
+Print the version of \fBhwb\fR.
+.TP
+\fB-h, --help\fR
+Print the help message.
+.SH EXAMPLES
+Print a capitalized greeting:
+.BR hwb \ \-c  \ world
+.PP
+Print a personalized greeting:
+.BR hwb \ \-g \ Hi \ Bob
+.PP
+Print a greeting without colored output:
+.BR hwb \ \-\-color \ never \ Alice
+.PP
+Print a greeting to the world:
+.BR hwb \ \-w
+.SH EXIT STATUS
+.IP \fB0\fR
+Program finished without any errors.
+.IP \fB1\fR
+Program could not be started, passed wrong options or arguments.
+.SH SEE ALSO
+.BR echo (1)
+.SH AUTHOR
+Grzegorz Kodrzycki <grzegorz@example.com>
+.SH BUGS
+Please report any bugs to the author.

@@ -1,0 +1,26 @@
+# if [ "$#" -eq 1 ]; then
+#     max=$1
+# else 
+#     max=1000
+# fi
+
+max=${1:-1000}
+
+filter() {
+    local number
+    read -r number  
+    if [[ -n $number ]]; then
+        echo $number
+
+        while read -r num; do
+            if (( $num % $number != 0 )); then
+                echo $num
+            fi
+        done | filter &
+    fi
+}   
+
+seq 2 $max | filter | cat
+# ; do
+#     echo $n
+# done | filter &
