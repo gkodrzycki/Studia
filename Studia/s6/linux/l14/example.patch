@@ -1,0 +1,9 @@
+--- example.py	2024-05-30 12:30:22.353888594 +0200
++++ example2.py	2024-05-30 12:30:30.841391290 +0200
+@@ -1,5 +1,5 @@
+ def greet(name):
+-    return f"Hello, {name}!"
++    return f"Hi, {name}!"
+ 
+ if __name__ == "__main__":
+     print(greet("World"))
